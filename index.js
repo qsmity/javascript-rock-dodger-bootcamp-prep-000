@@ -63,7 +63,11 @@ function createRock(x) {
   rock.style.top = `${top}px`
 
 
+<<<<<<< HEAD
   GAME.appendChild(rock)
+=======
+  var add = GAME.append(rock)
+>>>>>>> edfe60317f62b7da3a6376ee9116dd4c94718197
   /**
    * Now that we have a rock, we'll need to append
    * it to GAME and move it downwards.
@@ -80,10 +84,17 @@ function createRock(x) {
    
     if (checkCollision(rock) === true){
       return endGame()
+<<<<<<< HEAD
     } else if (top < GAME_HEIGHT){
       rock.style.top = `${top += 2}px`
       window.requestAnimationFrame(moveRock)
     } else {
+=======
+    } else if (top < 381){
+      top += 2
+      window.requestAnimationFrame(moveRock)
+    } else if (top > 380) {
+>>>>>>> edfe60317f62b7da3a6376ee9116dd4c94718197
       rock.remove()
     }
    
@@ -124,10 +135,15 @@ function createRock(x) {
  */
 function endGame() {
   clearInterval(gameInterval)
+<<<<<<< HEAD
   for (i = 0; i < ROCKS.length; i++){
     ROCKS[i].remove()
   }
   document.removeEventListener('keydown', moveDodger)
+=======
+  ROCKS.splice(0, ROCKS.length)
+  window.removeEventListener('keydown', moveDodger)
+>>>>>>> edfe60317f62b7da3a6376ee9116dd4c94718197
   alert('YOU LOSE!')
 }
 
@@ -140,6 +156,7 @@ function moveDodger(e) {
    * we've declared for you above.)
    * And be sure to use the functions declared below!
    */
+<<<<<<< HEAD
    var key = e.which
    
   // if (key !== LEFT_ARROW && key !== RIGHT_ARROW){
@@ -157,6 +174,20 @@ function moveDodger(e) {
     moveDodgerRight()
   }
 
+=======
+   document.addEventListener('keydown', function(e) {
+  if (e.which === 37) {
+    moveDodgerLeft()
+  }
+})
+
+   document.addEventListener('keydown', function(e) {
+  if (e.which === 39) {
+    moveDodgerRight()
+  }
+})
+   
+>>>>>>> edfe60317f62b7da3a6376ee9116dd4c94718197
 }
 
 function moveDodgerLeft() {
@@ -166,12 +197,25 @@ function moveDodgerLeft() {
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
    
+<<<<<<< HEAD
    window.requestAnimationFrame(function(){
      const left = positionToInteger(DODGER.style.left)
      if (left > 0 && left < 360) {
      DODGER.style.left = `${left - 4}px`
    }
    });
+=======
+  var leftNumbers = DODGER.style.left.replace('px', '')
+  var left = parseInt(leftNumbers, 10)
+ 
+  function moveLeft(){
+  if (left > 0) {
+    DODGER.style.left = `${left - 4}px`
+    window.requestAnimationFrame(moveLeft)
+  }
+}
+window.requestAnimationFrame(moveLeft)
+>>>>>>> edfe60317f62b7da3a6376ee9116dd4c94718197
 }
 
 function moveDodgerRight() {
@@ -180,12 +224,26 @@ function moveDodgerRight() {
    * This function should move DODGER to the right
    * (mabye 4 pixels?). Use window.requestAnimationFrame()!
    */
+<<<<<<< HEAD
    window.requestAnimationFrame(function(){
      const right = positionToInteger(DODGER.style.left)
      if (right < 360) {
      DODGER.style.left = `${right + 4}px`
    }
    });
+=======
+   
+  var rightNumbers = DODGER.style.left.replace('px', '')
+  var right = parseInt(rightNumbers, 10)
+  
+  function moveRight(){
+  if (right > 0) {
+    DODGER.style.left = `${right + 4}px`
+    window.requestAnimationFrame(moveRight)
+  }
+  }
+  window.requestAnimationFrame(moveRight)
+>>>>>>> edfe60317f62b7da3a6376ee9116dd4c94718197
 } 
 
 /**
